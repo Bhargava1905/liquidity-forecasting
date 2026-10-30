@@ -1,0 +1,15 @@
+case_id,issue_type,is_anomaly,target_type,target_id,expected_decision,rule_reference,notes
+ANOM-001,BALANCE_RECONCILIATION_MISMATCH,true,BankAccount,BANKACC-ENT-000005-005,FLAG_AND_USE_LEDGER_BALANCE,R1,Recorded closing changed by -500.00 SGD after the ledger was generated.
+ANOM-002,BALANCE_RECONCILIATION_MISMATCH,true,BankAccount,BANKACC-ENT-000008-005,FLAG_AND_USE_LEDGER_BALANCE,R1,Recorded closing changed by 1234.56 GBP after the ledger was generated.
+ANOM-003,BALANCE_RECONCILIATION_MISMATCH,true,BankAccount,BANKACC-ENT-000019-002,FLAG_AND_USE_LEDGER_BALANCE,R1,Recorded closing changed by -0.01 SGD after the ledger was generated.
+ANOM-004,MISSING_FX_RATE,true,CurrencyRate,FX-FWD-20261030-20261109-GBP-INR,FLAG_UNRESOLVED_CONVERSION,R3,GBP forward for horizon day 10 removed from the 2026-10-30 curve.
+ANOM-005,MISSING_FX_RATE,true,CurrencyRate,FX-FWD-20261030-20261120-SGD-INR,FLAG_UNRESOLVED_CONVERSION,R3,SGD forward for horizon day 21 removed from the 2026-10-30 curve.
+ANOM-006,DUPLICATE_CASH_FLOW,true,CashFlowForecast,CF-2026-008183,FLAG_AND_EXCLUDE_DUPLICATE,R5,Re-sent copy of CF-2026-008099 (PAY-2026-003656) two hours later.
+ANOM-007,DUPLICATE_CASH_FLOW,true,CashFlowForecast,CF-2026-013055,FLAG_AND_EXCLUDE_DUPLICATE,R5,Re-sent copy of CF-2026-012882 (REC-2026-007043) two hours later.
+ANOM-008,DUPLICATE_CASH_FLOW,true,CashFlowForecast,CF-2026-015463,FLAG_AND_EXCLUDE_DUPLICATE,R5,Re-sent copy of CF-2026-015422 (PAY-2026-007005) two hours later.
+ANOM-009,POST_CUTOFF_ACTUAL,true,CashFlowForecast,CF-2026-019815,FLAG_AND_EXCLUDE_FROM_FORECAST,R4,"Copies actual LED-2026-00099092 that became available at 2026-10-30T16:29:00, after the 2026-10-30T10:00:00 cutoff."
+ANOM-010,POST_CUTOFF_ACTUAL,true,CashFlowForecast,CF-2026-019876,FLAG_AND_EXCLUDE_FROM_FORECAST,R4,"Copies actual LED-2026-00099339 that became available at 2026-10-30T17:12:00, after the 2026-10-30T10:00:00 cutoff."
+ANOM-011,MIXED_CURRENCY_WITHOUT_CONVERSION,true,EntityBalanceReport,EBR-2026-000002,REJECT_UNCONVERTED_TOTAL,R3,Reported total is the plain sum of account balances in different currencies.
+ANOM-012,MIXED_CURRENCY_WITHOUT_CONVERSION,true,EntityBalanceReport,EBR-2026-000020,REJECT_UNCONVERTED_TOTAL,R3,Reported total is the plain sum of account balances in different currencies.
+CTRL-013,NOT_DUPLICATE_SAME_AMOUNT,false,CashFlowForecast,CF-2026-012193,INCLUDE,R5,"Same customer, account, amount and date as CF-2026-004759 but a different invoice."
+CTRL-014,KNOWLEDGE_AT_CUTOFF,false,CashFlowForecast,CF-2026-019274,INCLUDE,R4,knowledge_time equals the cutoff exactly; the rule is inclusive.

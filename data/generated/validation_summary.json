@@ -1,0 +1,335 @@
+{
+  "checks": {
+    "cutoff_safety": {
+      "examples": [],
+      "failures": 0,
+      "passed": true
+    },
+    "daily_balance_reconciliation": {
+      "account_days": 4500,
+      "examples": [],
+      "failures": 0,
+      "passed": true,
+      "recorded_closing_mismatches": 3
+    },
+    "date_ordering": {
+      "examples": [],
+      "failures": 0,
+      "passed": true
+    },
+    "exception_consistency": {
+      "by_type": {
+        "BALANCE_RECONCILIATION_MISMATCH": 3,
+        "DUPLICATE_CASH_FLOW": 10,
+        "LIQUIDITY_BUFFER_BREACH": 2,
+        "MISSING_FX_RATE": 6,
+        "MIXED_CURRENCY_WITHOUT_CONVERSION": 2,
+        "POST_CUTOFF_ACTUAL": 8
+      },
+      "examples": [],
+      "exceptions": 31,
+      "failures": 0,
+      "passed": true
+    },
+    "forecast_recomputation": {
+      "examples": [],
+      "failures": 0,
+      "passed": true,
+      "positions": 18000,
+      "runs": 4
+    },
+    "foreign_key_integrity": {
+      "examples": [],
+      "failures": 0,
+      "passed": true
+    },
+    "fx_and_conversion": {
+      "examples": [],
+      "failures": 0,
+      "passed": true,
+      "spot_range_pct": {
+        "EUR": 2.48,
+        "GBP": 7.18,
+        "SGD": 2.59,
+        "USD": 1.67
+      }
+    },
+    "ground_truth_detection": {
+      "controls_checked": 2,
+      "examples": [],
+      "f1": 1.0,
+      "failures": 0,
+      "passed": true,
+      "per_type": {
+        "BALANCE_RECONCILIATION_MISMATCH": {
+          "detected": 3,
+          "labelled": 3,
+          "true_positive": 3
+        },
+        "DUPLICATE_CASH_FLOW": {
+          "detected": 3,
+          "labelled": 3,
+          "true_positive": 3
+        },
+        "MISSING_FX_RATE": {
+          "detected": 2,
+          "labelled": 2,
+          "true_positive": 2
+        },
+        "MIXED_CURRENCY_WITHOUT_CONVERSION": {
+          "detected": 2,
+          "labelled": 2,
+          "true_positive": 2
+        },
+        "POST_CUTOFF_ACTUAL": {
+          "detected": 2,
+          "labelled": 2,
+          "true_positive": 2
+        }
+      },
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    "ground_truth_isolation": {
+      "examples": [],
+      "failures": 0,
+      "passed": true
+    },
+    "lifecycle_transitions": {
+      "examples": [],
+      "failures": 0,
+      "passed": true
+    },
+    "primary_key_uniqueness": {
+      "examples": [],
+      "failures": 0,
+      "passed": true
+    },
+    "reproducibility": {
+      "examples": [],
+      "failures": 0,
+      "files_compared": 23,
+      "passed": true
+    },
+    "scenario_assumption_isolation": {
+      "examples": [],
+      "failures": 0,
+      "passed": true,
+      "scenarios_compared": 3
+    },
+    "schema_conformance": {
+      "examples": [],
+      "failures": 0,
+      "passed": true,
+      "tables": 18
+    },
+    "volume_and_coverage": {
+      "actual": {
+        "bank_accounts": 150,
+        "cash_flow_forecasts": 20000,
+        "ledger_entries": 100000,
+        "legal_entities": 30
+      },
+      "coverage": {
+        "currencies_with_accounts": 5,
+        "delayed_receivables": 807,
+        "forecast_versions": 4,
+        "max_spot_move_pct": 7.18,
+        "one_off_payables": 50,
+        "scenarios": [
+          "BASE",
+          "DELAYED_RECEIPT",
+          "STRESS"
+        ]
+      },
+      "examples": [],
+      "expected": {
+        "bank_accounts": 150,
+        "cash_flow_forecasts": 20000,
+        "ledger_entries": 100000,
+        "legal_entities": 30
+      },
+      "failures": 0,
+      "passed": true
+    }
+  },
+  "dataset": "generated",
+  "detected_findings": [
+    {
+      "decision": "FLAG_AND_USE_LEDGER_BALANCE",
+      "evidence": "recorded 116934.03 vs derived 117434.03",
+      "issue_type": "BALANCE_RECONCILIATION_MISMATCH",
+      "target_id": "BANKACC-ENT-000005-005"
+    },
+    {
+      "decision": "FLAG_AND_USE_LEDGER_BALANCE",
+      "evidence": "recorded 956084.45 vs derived 954849.89",
+      "issue_type": "BALANCE_RECONCILIATION_MISMATCH",
+      "target_id": "BANKACC-ENT-000008-005"
+    },
+    {
+      "decision": "FLAG_AND_USE_LEDGER_BALANCE",
+      "evidence": "recorded 1071193.78 vs derived 1071193.79",
+      "issue_type": "BALANCE_RECONCILIATION_MISMATCH",
+      "target_id": "BANKACC-ENT-000019-002"
+    },
+    {
+      "decision": "FLAG_AND_EXCLUDE_DUPLICATE",
+      "evidence": "repeats CF-2026-008099",
+      "issue_type": "DUPLICATE_CASH_FLOW",
+      "target_id": "CF-2026-008183"
+    },
+    {
+      "decision": "FLAG_AND_EXCLUDE_DUPLICATE",
+      "evidence": "repeats CF-2026-012882",
+      "issue_type": "DUPLICATE_CASH_FLOW",
+      "target_id": "CF-2026-013055"
+    },
+    {
+      "decision": "FLAG_AND_EXCLUDE_DUPLICATE",
+      "evidence": "repeats CF-2026-015422",
+      "issue_type": "DUPLICATE_CASH_FLOW",
+      "target_id": "CF-2026-015463"
+    },
+    {
+      "decision": "FLAG_AND_EXCLUDE_FROM_FORECAST",
+      "evidence": "actual known 2026-10-30T16:49:00, after a run cutoff",
+      "issue_type": "POST_CUTOFF_ACTUAL",
+      "target_id": "CF-2026-019815"
+    },
+    {
+      "decision": "FLAG_AND_EXCLUDE_FROM_FORECAST",
+      "evidence": "actual known 2026-10-30T17:32:00, after a run cutoff",
+      "issue_type": "POST_CUTOFF_ACTUAL",
+      "target_id": "CF-2026-019876"
+    },
+    {
+      "decision": "FLAG_UNRESOLVED_CONVERSION",
+      "evidence": "needed by run FCAST-2026-10-30-001",
+      "issue_type": "MISSING_FX_RATE",
+      "target_id": "FX-FWD-20261030-20261109-GBP-INR"
+    },
+    {
+      "decision": "FLAG_UNRESOLVED_CONVERSION",
+      "evidence": "needed by run FCAST-2026-10-30-001",
+      "issue_type": "MISSING_FX_RATE",
+      "target_id": "FX-FWD-20261030-20261120-SGD-INR"
+    },
+    {
+      "decision": "REJECT_UNCONVERTED_TOTAL",
+      "evidence": "reported 4970878.19 = native sum; converted 4671727.96",
+      "issue_type": "MIXED_CURRENCY_WITHOUT_CONVERSION",
+      "target_id": "EBR-2026-000002"
+    },
+    {
+      "decision": "REJECT_UNCONVERTED_TOTAL",
+      "evidence": "reported 22602885.93 = native sum; converted 4036254.84",
+      "issue_type": "MIXED_CURRENCY_WITHOUT_CONVERSION",
+      "target_id": "EBR-2026-000020"
+    }
+  ],
+  "metrics": {
+    "backtest": {
+      "account_days": 2250,
+      "days": 15,
+      "group_bias_inr": "-181506730.38",
+      "group_mae_inr": "188620770.75",
+      "group_wape_pct": 1.693,
+      "native_component_totals": {
+        "cutoff_lag_component": "-316028642.55",
+        "timing_component": "-308741295.80",
+        "unforecast_component": "-13451866.12"
+      },
+      "primary_drivers": {
+        "CUTOFF_LAG": 776,
+        "TIMING": 352,
+        "UNFORECAST": 1122
+      },
+      "run": "FCAST-2026-10-15-001",
+      "variance_explained_pct": 100.0
+    },
+    "distributions": {
+      "item_amount_inr_p10_p50_p90_p99": [
+        133157,
+        428146,
+        1390419,
+        3946223
+      ],
+      "ledger_type_mix": {
+        "BANK_FEE": 6702,
+        "CARD_SETTLEMENT": 37892,
+        "CUSTOMER_RECEIPT": 2678,
+        "CUSTOMER_REFUND": 6668,
+        "DIRECT_DEBIT": 34071,
+        "MISC_RECEIPT": 9509,
+        "ONE_OFF_PAYMENT": 14,
+        "PAYROLL": 30,
+        "SUPPLIER_PAYMENT": 2436
+      },
+      "payable_status": {
+        "PAID": 2450,
+        "SCHEDULED": 6634
+      },
+      "receivable_status": {
+        "OVERDUE": 233,
+        "RECEIVED": 2678,
+        "SCHEDULED": 8000
+      },
+      "risk_grades": {
+        "A": 7617,
+        "B": 2171,
+        "C": 1123
+      },
+      "weekend_share_pct": 3.69
+    },
+    "scenarios": {
+      "FCAST-2026-10-15-001": {
+        "breach_entity_days": "0",
+        "closing_group_inr": "11141059797.51",
+        "delayed_items": "0",
+        "entities_breaching": "0",
+        "min_group_date": "2026-11-13",
+        "min_group_inr": "11140411929.69",
+        "opening_group_inr": "11306302792.33",
+        "scenario_id": "SCN-BASE",
+        "unresolved_positions": "0"
+      },
+      "FCAST-2026-10-30-001": {
+        "breach_entity_days": "0",
+        "closing_group_inr": "10175231384.18",
+        "delayed_items": "0",
+        "entities_breaching": "0",
+        "min_group_date": "2026-11-23",
+        "min_group_inr": "10144748610.84",
+        "opening_group_inr": "10747998245.58",
+        "scenario_id": "SCN-BASE",
+        "unresolved_positions": "61"
+      },
+      "FCAST-2026-10-30-002": {
+        "breach_entity_days": "0",
+        "closing_group_inr": "9987622455.53",
+        "delayed_items": "1374",
+        "entities_breaching": "0",
+        "min_group_date": "2026-11-23",
+        "min_group_inr": "9961844820.19",
+        "opening_group_inr": "10747998245.58",
+        "scenario_id": "SCN-DELAY",
+        "unresolved_positions": "61"
+      },
+      "FCAST-2026-10-30-003": {
+        "breach_entity_days": "34",
+        "closing_group_inr": "8793762562.33",
+        "delayed_items": "4298",
+        "entities_breaching": "2",
+        "min_group_date": "2026-11-25",
+        "min_group_inr": "8746845580.76",
+        "opening_group_inr": "10305859871.59",
+        "scenario_id": "SCN-STRESS",
+        "unresolved_positions": "61"
+      }
+    }
+  },
+  "passed": true,
+  "scale": "full",
+  "seed": 20261022
+}

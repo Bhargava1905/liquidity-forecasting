@@ -1,0 +1,3 @@
+* text=auto eol=lf
+# Generated data is stored byte-for-byte so checksums in source_manifest.json match any checkout.
+data/generated/** -text

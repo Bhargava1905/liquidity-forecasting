@@ -1,0 +1,195 @@
+{
+  "files_compared": 23,
+  "first_run": {
+    "actual_vs_forecast.csv": {
+      "rows": 2250,
+      "sha256": "32d5c3837bf33aefaabdee068d449c21e8721145844b4aade5dca985446f1f93"
+    },
+    "bank_accounts.csv": {
+      "rows": 150,
+      "sha256": "30914ff7c03d3ba2a9342212ee536e2ad95e43702b0043f8977bf7bce9e26443"
+    },
+    "cash_flow_forecasts.csv": {
+      "rows": 20000,
+      "sha256": "04247d6bda6bb990695c61290ce8b74b0383f2c224383a502e73d0e8199f08ff"
+    },
+    "cash_positions.csv": {
+      "rows": 18000,
+      "sha256": "7d61038389ce04b2060dd5349d102a457c3a973caa0601dc4a4299c88aa45da1"
+    },
+    "currency_rates.csv": {
+      "rows": 448,
+      "sha256": "2c46bb43ab8748d3bf8fdd799afb07838c60674220b3f7dc976b97ac46ebb4ee"
+    },
+    "daily_balances.csv": {
+      "rows": 4500,
+      "sha256": "dd1957769cc2110ac5ba4f8f1edf8e0ed809d6d4fde43ccc9d0c42b1395169d0"
+    },
+    "entity_balance_reports.csv": {
+      "rows": 30,
+      "sha256": "7a4845c868597ed459bf15d2b00c662e8781ebf390d81288a8ae88d53371a3e1"
+    },
+    "entity_positions.csv": {
+      "rows": 3600,
+      "sha256": "f9bdc341fd26e887728e3de0b50de1617215d2bcc616bdef5c3601a74a0c6f9b"
+    },
+    "exceptions.csv": {
+      "rows": 31,
+      "sha256": "d182235f9ad03fadf8ee5ba9ccc7ba866ce943e32a291eb2b39f9340eddbc679"
+    },
+    "forecast_run_items.csv": {
+      "rows": 80000,
+      "sha256": "07db5a38bd5cb6340f518a21ed16207613edf326bbb2a1d00718a179213ec8df"
+    },
+    "forecast_runs.csv": {
+      "rows": 4,
+      "sha256": "91455849d10ad5c5215e6be65ae1bca0d95eb51bce667cc28609ed6a97d6e155"
+    },
+    "ground_truth.csv": {
+      "rows": 14,
+      "sha256": "9b751926210df7fc31ef98a9167fe8195e476c48a65e0666a245219a15aeb8c0"
+    },
+    "ground_truth.json": {
+      "rows": null,
+      "sha256": "6859e5ef8171b07f3def622c9552eaca11036cb543d0550560484e772c0723c2"
+    },
+    "ledger_entries.csv": {
+      "rows": 100000,
+      "sha256": "cbc25875d05346b886660eb0d9f47f0c8b2257c455fdd386e8ac29adbdd54c30"
+    },
+    "legal_entities.csv": {
+      "rows": 30,
+      "sha256": "752b8776d0531cdd1b366c43000115403d1f1cdc35eccb02add5496182b3d42a"
+    },
+    "liquidity_scenarios.csv": {
+      "rows": 3,
+      "sha256": "fb02562dc3f6877afd39755a62c223add4ce16b9f1babbe8a6fd98bd661d46d6"
+    },
+    "payables.csv": {
+      "rows": 9084,
+      "sha256": "74917b793d62d2dc4715bbe6016fea3cf6cd361cd92449e6db15163c2b14c304"
+    },
+    "receivables.csv": {
+      "rows": 10911,
+      "sha256": "0606eebb5d960bb64981ffca992a3b2070f35f4d82e467dfd9894107656dd85e"
+    },
+    "scenario_summary.csv": {
+      "rows": 4,
+      "sha256": "58a07f0accfd7180e98ae2e78d4aaa54d065dd556054eff1cbf8c7733e633b23"
+    },
+    "schema.sql": {
+      "rows": null,
+      "sha256": "0494dd116f1db41a629d8ea123e92824241320936dc83338ca4d5c2c5988b411"
+    },
+    "seed_data.json.gz": {
+      "rows": null,
+      "sha256": "b3dbcbbac6615cabde0d58bf49b5e6f487a5fd3245890d2f92ff1b280c1d20dc"
+    },
+    "seed_data.sql.gz": {
+      "rows": null,
+      "sha256": "ce2e338d92ce3bc5f28e1c3e57dd5bb48f287ad993f32097b643e4105dd1a327"
+    },
+    "state_change_events.csv": {
+      "rows": 25930,
+      "sha256": "541d20d35409d26f44ebf5208e45591bce45fc5b2c0ff3f87aab7ea5adabdb15"
+    }
+  },
+  "mismatched_files": [],
+  "passed": true,
+  "scale": "full",
+  "second_run": {
+    "actual_vs_forecast.csv": {
+      "rows": 2250,
+      "sha256": "32d5c3837bf33aefaabdee068d449c21e8721145844b4aade5dca985446f1f93"
+    },
+    "bank_accounts.csv": {
+      "rows": 150,
+      "sha256": "30914ff7c03d3ba2a9342212ee536e2ad95e43702b0043f8977bf7bce9e26443"
+    },
+    "cash_flow_forecasts.csv": {
+      "rows": 20000,
+      "sha256": "04247d6bda6bb990695c61290ce8b74b0383f2c224383a502e73d0e8199f08ff"
+    },
+    "cash_positions.csv": {
+      "rows": 18000,
+      "sha256": "7d61038389ce04b2060dd5349d102a457c3a973caa0601dc4a4299c88aa45da1"
+    },
+    "currency_rates.csv": {
+      "rows": 448,
+      "sha256": "2c46bb43ab8748d3bf8fdd799afb07838c60674220b3f7dc976b97ac46ebb4ee"
+    },
+    "daily_balances.csv": {
+      "rows": 4500,
+      "sha256": "dd1957769cc2110ac5ba4f8f1edf8e0ed809d6d4fde43ccc9d0c42b1395169d0"
+    },
+    "entity_balance_reports.csv": {
+      "rows": 30,
+      "sha256": "7a4845c868597ed459bf15d2b00c662e8781ebf390d81288a8ae88d53371a3e1"
+    },
+    "entity_positions.csv": {
+      "rows": 3600,
+      "sha256": "f9bdc341fd26e887728e3de0b50de1617215d2bcc616bdef5c3601a74a0c6f9b"
+    },
+    "exceptions.csv": {
+      "rows": 31,
+      "sha256": "d182235f9ad03fadf8ee5ba9ccc7ba866ce943e32a291eb2b39f9340eddbc679"
+    },
+    "forecast_run_items.csv": {
+      "rows": 80000,
+      "sha256": "07db5a38bd5cb6340f518a21ed16207613edf326bbb2a1d00718a179213ec8df"
+    },
+    "forecast_runs.csv": {
+      "rows": 4,
+      "sha256": "91455849d10ad5c5215e6be65ae1bca0d95eb51bce667cc28609ed6a97d6e155"
+    },
+    "ground_truth.csv": {
+      "rows": 14,
+      "sha256": "9b751926210df7fc31ef98a9167fe8195e476c48a65e0666a245219a15aeb8c0"
+    },
+    "ground_truth.json": {
+      "rows": null,
+      "sha256": "6859e5ef8171b07f3def622c9552eaca11036cb543d0550560484e772c0723c2"
+    },
+    "ledger_entries.csv": {
+      "rows": 100000,
+      "sha256": "cbc25875d05346b886660eb0d9f47f0c8b2257c455fdd386e8ac29adbdd54c30"
+    },
+    "legal_entities.csv": {
+      "rows": 30,
+      "sha256": "752b8776d0531cdd1b366c43000115403d1f1cdc35eccb02add5496182b3d42a"
+    },
+    "liquidity_scenarios.csv": {
+      "rows": 3,
+      "sha256": "fb02562dc3f6877afd39755a62c223add4ce16b9f1babbe8a6fd98bd661d46d6"
+    },
+    "payables.csv": {
+      "rows": 9084,
+      "sha256": "74917b793d62d2dc4715bbe6016fea3cf6cd361cd92449e6db15163c2b14c304"
+    },
+    "receivables.csv": {
+      "rows": 10911,
+      "sha256": "0606eebb5d960bb64981ffca992a3b2070f35f4d82e467dfd9894107656dd85e"
+    },
+    "scenario_summary.csv": {
+      "rows": 4,
+      "sha256": "58a07f0accfd7180e98ae2e78d4aaa54d065dd556054eff1cbf8c7733e633b23"
+    },
+    "schema.sql": {
+      "rows": null,
+      "sha256": "0494dd116f1db41a629d8ea123e92824241320936dc83338ca4d5c2c5988b411"
+    },
+    "seed_data.json.gz": {
+      "rows": null,
+      "sha256": "b3dbcbbac6615cabde0d58bf49b5e6f487a5fd3245890d2f92ff1b280c1d20dc"
+    },
+    "seed_data.sql.gz": {
+      "rows": null,
+      "sha256": "ce2e338d92ce3bc5f28e1c3e57dd5bb48f287ad993f32097b643e4105dd1a327"
+    },
+    "state_change_events.csv": {
+      "rows": 25930,
+      "sha256": "541d20d35409d26f44ebf5208e45591bce45fc5b2c0ff3f87aab7ea5adabdb15"
+    }
+  },
+  "seed": 20261022
+}

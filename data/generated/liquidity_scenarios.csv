@@ -1,0 +1,4 @@
+scenario_id,scenario_name,description,assumption_json,effective_from,effective_to,status
+SCN-BASE,BASE,"Scheduled receivable and payable dates, forward FX curve at cutoff, no adjustments.","{""fx_shock_pct"": 0.0, ""one_off_outflows"": [], ""receipt_delay_days_by_grade"": {""A"": 0, ""B"": 0, ""C"": 0}}",2026-10-01,,ACTIVE
+SCN-DELAY,DELAYED_RECEIPT,Receipts from grade B and C customers arrive late by their observed delay.,"{""fx_shock_pct"": 0.0, ""one_off_outflows"": [], ""receipt_delay_days_by_grade"": {""A"": 0, ""B"": 3, ""C"": 9}}",2026-10-01,,ACTIVE
+SCN-STRESS,STRESS,"Longer receipt delays for all grades, 5% adverse FX on non-INR balances and an unplanned INR 250m outflow.","{""fx_shock_pct"": -5.0, ""one_off_outflows"": [{""amount"": ""250000000.00"", ""bank_account_id"": ""BANKACC-ENT-000001-001"", ""horizon_day"": 3, ""reason"": ""Litigation settlement""}], ""receipt_delay_days_by_grade"": {""A"": 3, ""B"": 10, ""C"": 21}}",2026-10-01,,ACTIVE

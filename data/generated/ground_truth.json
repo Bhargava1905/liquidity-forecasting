@@ -1,0 +1,142 @@
+[
+  {
+    "case_id": "ANOM-001",
+    "issue_type": "BALANCE_RECONCILIATION_MISMATCH",
+    "is_anomaly": "true",
+    "target_type": "BankAccount",
+    "target_id": "BANKACC-ENT-000005-005",
+    "expected_decision": "FLAG_AND_USE_LEDGER_BALANCE",
+    "rule_reference": "R1",
+    "notes": "Recorded closing changed by -500.00 SGD after the ledger was generated."
+  },
+  {
+    "case_id": "ANOM-002",
+    "issue_type": "BALANCE_RECONCILIATION_MISMATCH",
+    "is_anomaly": "true",
+    "target_type": "BankAccount",
+    "target_id": "BANKACC-ENT-000008-005",
+    "expected_decision": "FLAG_AND_USE_LEDGER_BALANCE",
+    "rule_reference": "R1",
+    "notes": "Recorded closing changed by 1234.56 GBP after the ledger was generated."
+  },
+  {
+    "case_id": "ANOM-003",
+    "issue_type": "BALANCE_RECONCILIATION_MISMATCH",
+    "is_anomaly": "true",
+    "target_type": "BankAccount",
+    "target_id": "BANKACC-ENT-000019-002",
+    "expected_decision": "FLAG_AND_USE_LEDGER_BALANCE",
+    "rule_reference": "R1",
+    "notes": "Recorded closing changed by -0.01 SGD after the ledger was generated."
+  },
+  {
+    "case_id": "ANOM-004",
+    "issue_type": "MISSING_FX_RATE",
+    "is_anomaly": "true",
+    "target_type": "CurrencyRate",
+    "target_id": "FX-FWD-20261030-20261109-GBP-INR",
+    "expected_decision": "FLAG_UNRESOLVED_CONVERSION",
+    "rule_reference": "R3",
+    "notes": "GBP forward for horizon day 10 removed from the 2026-10-30 curve."
+  },
+  {
+    "case_id": "ANOM-005",
+    "issue_type": "MISSING_FX_RATE",
+    "is_anomaly": "true",
+    "target_type": "CurrencyRate",
+    "target_id": "FX-FWD-20261030-20261120-SGD-INR",
+    "expected_decision": "FLAG_UNRESOLVED_CONVERSION",
+    "rule_reference": "R3",
+    "notes": "SGD forward for horizon day 21 removed from the 2026-10-30 curve."
+  },
+  {
+    "case_id": "ANOM-006",
+    "issue_type": "DUPLICATE_CASH_FLOW",
+    "is_anomaly": "true",
+    "target_type": "CashFlowForecast",
+    "target_id": "CF-2026-008183",
+    "expected_decision": "FLAG_AND_EXCLUDE_DUPLICATE",
+    "rule_reference": "R5",
+    "notes": "Re-sent copy of CF-2026-008099 (PAY-2026-003656) two hours later."
+  },
+  {
+    "case_id": "ANOM-007",
+    "issue_type": "DUPLICATE_CASH_FLOW",
+    "is_anomaly": "true",
+    "target_type": "CashFlowForecast",
+    "target_id": "CF-2026-013055",
+    "expected_decision": "FLAG_AND_EXCLUDE_DUPLICATE",
+    "rule_reference": "R5",
+    "notes": "Re-sent copy of CF-2026-012882 (REC-2026-007043) two hours later."
+  },
+  {
+    "case_id": "ANOM-008",
+    "issue_type": "DUPLICATE_CASH_FLOW",
+    "is_anomaly": "true",
+    "target_type": "CashFlowForecast",
+    "target_id": "CF-2026-015463",
+    "expected_decision": "FLAG_AND_EXCLUDE_DUPLICATE",
+    "rule_reference": "R5",
+    "notes": "Re-sent copy of CF-2026-015422 (PAY-2026-007005) two hours later."
+  },
+  {
+    "case_id": "ANOM-009",
+    "issue_type": "POST_CUTOFF_ACTUAL",
+    "is_anomaly": "true",
+    "target_type": "CashFlowForecast",
+    "target_id": "CF-2026-019815",
+    "expected_decision": "FLAG_AND_EXCLUDE_FROM_FORECAST",
+    "rule_reference": "R4",
+    "notes": "Copies actual LED-2026-00099092 that became available at 2026-10-30T16:29:00, after the 2026-10-30T10:00:00 cutoff."
+  },
+  {
+    "case_id": "ANOM-010",
+    "issue_type": "POST_CUTOFF_ACTUAL",
+    "is_anomaly": "true",
+    "target_type": "CashFlowForecast",
+    "target_id": "CF-2026-019876",
+    "expected_decision": "FLAG_AND_EXCLUDE_FROM_FORECAST",
+    "rule_reference": "R4",
+    "notes": "Copies actual LED-2026-00099339 that became available at 2026-10-30T17:12:00, after the 2026-10-30T10:00:00 cutoff."
+  },
+  {
+    "case_id": "ANOM-011",
+    "issue_type": "MIXED_CURRENCY_WITHOUT_CONVERSION",
+    "is_anomaly": "true",
+    "target_type": "EntityBalanceReport",
+    "target_id": "EBR-2026-000002",
+    "expected_decision": "REJECT_UNCONVERTED_TOTAL",
+    "rule_reference": "R3",
+    "notes": "Reported total is the plain sum of account balances in different currencies."
+  },
+  {
+    "case_id": "ANOM-012",
+    "issue_type": "MIXED_CURRENCY_WITHOUT_CONVERSION",
+    "is_anomaly": "true",
+    "target_type": "EntityBalanceReport",
+    "target_id": "EBR-2026-000020",
+    "expected_decision": "REJECT_UNCONVERTED_TOTAL",
+    "rule_reference": "R3",
+    "notes": "Reported total is the plain sum of account balances in different currencies."
+  },
+  {
+    "case_id": "CTRL-013",
+    "issue_type": "NOT_DUPLICATE_SAME_AMOUNT",
+    "is_anomaly": "false",
+    "target_type": "CashFlowForecast",
+    "target_id": "CF-2026-012193",
+    "expected_decision": "INCLUDE",
+    "rule_reference": "R5",
+    "notes": "Same customer, account, amount and date as CF-2026-004759 but a different invoice."
+  },
+  {
+    "case_id": "CTRL-014",
+    "issue_type": "KNOWLEDGE_AT_CUTOFF",
+    "is_anomaly": "false",
+    "target_type": "CashFlowForecast",
+    "target_id": "CF-2026-019274",
+    "expected_decision": "INCLUDE",
+    "rule_reference": "R4",
+    "notes": "knowledge_time equals the cutoff exactly; the rule is inclusive."
+  }
+]
