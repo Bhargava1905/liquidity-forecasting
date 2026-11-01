@@ -64,7 +64,9 @@ stress opening is lower because of the −5% FX shock on non-INR balances.
 
 **Back-test** of `FCAST-2026-10-15-001` (version 1 of base) against actuals, 2026-10-16 → 2026-10-30, 150 accounts:
 group WAPE 1.69%, mean absolute daily error INR 188.6m, bias −181.5m. **100% of variance is explained**: the residual
-is zero in integer cents. Components: cutoff lag −316.0m, receipt timing −308.7m, unforecast activity −13.5m.
+is zero in integer cents. Summed over all 2,250 account-days and valued in INR at each day's actual rate, the total
+variance of INR −2,722.6m splits into receipt timing −1,511.4m, unforecast activity −272.6m, cutoff lag +132.9m and FX
+effect −1,071.5m (`validation_summary.json → metrics.backtest.component_totals_inr`).
 
 **Anomaly detection** (validator vs `ground_truth.csv`): precision 1.0, recall 1.0, F1 1.0. Both boundary controls are
 correctly left unflagged.
@@ -103,9 +105,10 @@ USD 1.7%, EUR 2.5%, SGD 2.6% and GBP 7.2% (including the documented −3% shock)
 | `ground_truth_detection` | Precision, recall and F1 per issue type, and the controls |
 | `reproducibility` | Two same-seed generations are byte-identical |
 
-The 17 unit tests also confirm that the validator **fails** on tampered data: an edited ledger amount, an edited
+The 19 unit tests also confirm that the validator **fails** on tampered data: an edited ledger amount, an edited
 position, an undocumented scenario change, or an unlabelled duplicate. They also load the SQL seed into SQLite with
-foreign keys enforced.
+foreign keys enforced, check that reported variance totals are converted to INR, and check that text outputs use LF line
+endings on every OS.
 
 ## Outputs (`data/generated/`)
 

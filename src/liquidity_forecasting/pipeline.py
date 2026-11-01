@@ -621,9 +621,9 @@ def export(output: Path, sources: dict, derived: dict, truth: list[dict], scale_
     tables = {**sources, **derived, "ground_truth": truth}
     for name in TABLES:
         write_csv(output / f"{name}.csv", columns(name), tables[name])
-    (output / "ground_truth.json").write_text(json.dumps(truth, indent=2) + "\n", encoding="utf-8")
+    (output / "ground_truth.json").write_text(json.dumps(truth, indent=2) + "\n", encoding="utf-8", newline="\n")
     (output / "schema.sql").write_text("-- DDL for every exported table, generated from schema.py.\n\n"
-                                       + "\n\n".join(sql_ddl(name) for name in TABLES) + "\n", encoding="utf-8")
+                                       + "\n\n".join(sql_ddl(name) for name in TABLES) + "\n", encoding="utf-8", newline="\n")
     seed_json = {"seed": seed, "scale": scale_name, "tables": {name: sources[name] for name in SOURCE_TABLES}}
     write_gzip(output / "seed_data.json.gz", json.dumps(seed_json, sort_keys=True, separators=(",", ":")) + "\n")
     sql = ["-- Source/seed tables in parent-first order. Load: gunzip -c seed_data.sql.gz | sqlite3 liquidity.db", "BEGIN;"]
@@ -652,7 +652,7 @@ def export(output: Path, sources: dict, derived: dict, truth: list[dict], scale_
                 with path.open(encoding="utf-8") as stream:
                     rows = sum(1 for _ in stream) - 1
             manifest["files"][path.name] = {"rows": rows, "sha256": sha256(path)}
-    (output / "source_manifest.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    (output / "source_manifest.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
     return manifest
 
 
@@ -677,7 +677,7 @@ def main() -> None:
         result = {"seed": args.seed, "scale": args.scale, "passed": not mismatched and manifest["files"].keys() == second["files"].keys(),
                   "mismatched_files": mismatched, "files_compared": len(manifest["files"]),
                   "first_run": manifest["files"], "second_run": second["files"]}
-        (args.output / "reproducibility.json").write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        (args.output / "reproducibility.json").write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
         if not result["passed"]:
             raise SystemExit(f"Reproducibility check failed: {mismatched}")
     print(json.dumps({"output": str(args.output), "scale": args.scale, "seed": args.seed, "files": len(manifest["files"]),

@@ -231,15 +231,17 @@
   "metrics": {
     "backtest": {
       "account_days": 2250,
+      "component_totals_inr": {
+        "cutoff_lag_inr": "132897228.32",
+        "fx_effect_inr": "-1071459606.24",
+        "timing_inr": "-1511390735.51",
+        "total_variance_inr": "-2722600955.72",
+        "unforecast_inr": "-272647842.17"
+      },
       "days": 15,
       "group_bias_inr": "-181506730.38",
       "group_mae_inr": "188620770.75",
       "group_wape_pct": 1.693,
-      "native_component_totals": {
-        "cutoff_lag_component": "-316028642.55",
-        "timing_component": "-308741295.80",
-        "unforecast_component": "-13451866.12"
-      },
       "primary_drivers": {
         "CUTOFF_LAG": 776,
         "TIMING": 352,

@@ -526,7 +526,11 @@ def evaluation_metrics(t: dict) -> dict:
     comparisons = t["actual_vs_forecast"]
     group = defaultdict(lambda: [0, 0])
     drivers = Counter(x["primary_driver"] for x in comparisons)
-    components = {k: sum(cents(x[k]) for x in comparisons) for k in ("cutoff_lag_component", "timing_component", "unforecast_component")}
+    components = ("cutoff_lag_component", "timing_component", "unforecast_component")
+    # Rows are in five currencies, so components are valued at each row's actual rate before summing (R3).
+    inr_totals = {k.replace("_component", "_inr"): round(sum(cents(x[k]) * float(x["actual_rate"]) for x in comparisons)) for k in components}
+    inr_totals["fx_effect_inr"] = sum(cents(x["fx_effect_reporting"]) for x in comparisons)
+    inr_totals["total_variance_inr"] = sum(cents(x["variance_reporting"]) for x in comparisons)
     for x in comparisons:
         group[x["position_date"]][0] += cents(x["forecast_reporting"])
         group[x["position_date"]][1] += cents(x["actual_reporting"])
@@ -545,7 +549,7 @@ def evaluation_metrics(t: dict) -> dict:
             "group_bias_inr": fmt(round(sum(errors) / max(len(errors), 1))),
             "group_wape_pct": round(100 * sum(abs(e) for e in errors) / absolute_actual, 4) if absolute_actual else 0.0,
             "variance_explained_pct": round(100 * (1 - residual / explained), 4) if explained else 100.0,
-            "native_component_totals": {k: fmt(v) for k, v in components.items()}, "primary_drivers": dict(drivers),
+            "component_totals_inr": {k: fmt(v) for k, v in inr_totals.items()}, "primary_drivers": dict(drivers),
         },
         "scenarios": {x["forecast_run_id"]: {k: v for k, v in x.items() if k != "forecast_run_id"} for x in t["scenario_summary"]},
         "distributions": {
@@ -562,7 +566,7 @@ def main() -> None:
     parser.add_argument("--dataset", default="data/generated", type=Path)
     args = parser.parse_args()
     report = validate(args.dataset)
-    (args.dataset / "validation_summary.json").write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    (args.dataset / "validation_summary.json").write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
     print(json.dumps({"passed": report["passed"], "checks": {k: v["passed"] for k, v in report["checks"].items()},
                       "detection": {k: report["checks"]["ground_truth_detection"][k] for k in ("precision", "recall", "f1")},
                       "backtest": report["metrics"]["backtest"]}, indent=2))

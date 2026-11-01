@@ -126,6 +126,16 @@ class StarterDataset(unittest.TestCase):
             parts = sum(round(float(row[k]) * 100) for k in ("cutoff_lag_component", "timing_component", "unforecast_component"))
             self.assertEqual(parts, round(float(row["variance_native"]) * 100))
 
+    def test_reported_component_totals_are_converted_to_inr(self):
+        totals = {k: round(float(v) * 100) for k, v in self.report["metrics"]["backtest"]["component_totals_inr"].items()}
+        parts = totals["cutoff_lag_inr"] + totals["timing_inr"] + totals["unforecast_inr"] + totals["fx_effect_inr"]
+        # Per-row rounding allows at most one cent per comparison row; an unconverted sum would be far off.
+        self.assertLessEqual(abs(parts - totals["total_variance_inr"]), len(rows(self.out, "actual_vs_forecast")))
+
+    def test_text_outputs_use_lf_line_endings(self):
+        for name in ("ground_truth.json", "schema.sql", "source_manifest.json", "ground_truth.csv", "ledger_entries.csv"):
+            self.assertNotIn(b"\r\n", (self.out / name).read_bytes(), name)
+
     def test_ground_truth_never_appears_in_inputs(self):
         for table in SOURCE_TABLES:
             header = (self.out / f"{table}.csv").read_text(encoding="utf-8").splitlines()[0]

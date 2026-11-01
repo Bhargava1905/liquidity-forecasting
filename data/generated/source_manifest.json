@@ -61,7 +61,7 @@
     },
     "ground_truth.json": {
       "rows": null,
-      "sha256": "6859e5ef8171b07f3def622c9552eaca11036cb543d0550560484e772c0723c2"
+      "sha256": "0a3de4b15780075a7dc66637935a42483f1c6d424346e858a406e11d12b5fb52"
     },
     "ledger_entries.csv": {
       "rows": 100000,
@@ -89,7 +89,7 @@
     },
     "schema.sql": {
       "rows": null,
-      "sha256": "0494dd116f1db41a629d8ea123e92824241320936dc83338ca4d5c2c5988b411"
+      "sha256": "7ddd397051c98b41607c4e309748824c91c08f0bd8bbb5910f7359b744c7e7ba"
     },
     "seed_data.json.gz": {
       "rows": null,
